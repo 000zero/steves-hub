@@ -7,8 +7,10 @@
 import { streamText, convertToModelMessages, type UIMessage } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { retrieveRelevantChunks, formatContext } from "@/lib/retrieval";
+import { Redis } from "@upstash/redis";
 
 const google = createGoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
+const redis = Redis.fromEnv(); // reads KV_REST_API_URL / KV_REST_API_TOKEN automatically
 
 export const runtime = "nodejs"; // needs fs access to read embeddings.json
 
@@ -44,6 +46,14 @@ export async function POST(req: Request) {
   if (!question.trim()) {
     return new Response("Missing question", { status: 400 });
   }
+
+  // Fire-and-forget log — don't block the response on this
+  redis
+    .lpush(
+      "chat:questions",
+      JSON.stringify({ question, timestamp: new Date().toISOString() })
+    )
+    .catch((err) => console.error("Failed to log question:", err));
 
   const relevantChunks = await retrieveRelevantChunks(question, 5);
   const context = formatContext(relevantChunks);
