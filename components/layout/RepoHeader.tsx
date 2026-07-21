@@ -7,41 +7,26 @@ import {
 export default function RepoHeader() {
   return (
     <section className="bg-header">
-      <div className="mx-auto flex max-w-screen-2xl items-start justify-between px-6 py-5">
+      <div className="mx-auto flex max-w-screen-2xl items-start justify-between px-4 py-4 sm:px-6 sm:py-5">
         {/* Left */}
         <div>
-          <h1 className="flex items-center gap-2 text-2xl font-semibold">
+          <h1 className="flex flex-wrap items-center gap-1.5 text-lg font-semibold sm:gap-2 sm:text-2xl">
             <UserRound
               size={20}
               className="text-muted"
             />
 
-            <span className="text-accent text-xl font-normal">
+            <span className="text-accent text-base font-normal sm:text-xl">
               steven-garcia
             </span>
 
             <span className="text-[#8b949e]">/</span>
 
-            <span className="text-accent text-xl font-bold">
+            <span className="text-accent text-base font-bold sm:text-xl">
               software-engineer
             </span>
           </h1>
 
-        </div>
-
-        {/* Right */}
-        <div className="flex gap-3">
-          <button className="flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2 text-xs hover:bg-highlight hover:cursor-pointer">
-            <Globe size={16} />
-            GitHub
-            <ExternalLink size={14} />
-          </button>
-
-          <button className="flex items-center gap-2 rounded-md border border-border bg-background px-4 py-2 text-xs hover:bg-highlight hover:cursor-pointer">
-            <UserRound size={16} />
-            LinkedIn
-            <ExternalLink size={14} />
-          </button>
         </div>
       </div>
     </section>

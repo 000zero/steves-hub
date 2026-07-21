@@ -7,7 +7,6 @@ import { useRef, useEffect, useState, type FormEvent } from "react";
 
 const SUGGESTED_QUESTIONS = [
   "What AI agent work has Steven done?",
-  "Tell me about the Stripe integration project",
   "What's Steven's experience with AWS?",
   "What did Steven do at Pacific Dental Services?",
 ];
@@ -20,10 +19,14 @@ export default function ResumeChat() {
   });
 
   const isLoading = status === "submitted" || status === "streaming";
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messages.length === 0) return;
+    const container = messagesContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
   }, [messages]);
 
   function handleSubmit(e: FormEvent) {
@@ -39,24 +42,24 @@ export default function ResumeChat() {
   }
 
   return (
-    <div className="flex flex-col h-[600px] max-w-2xl mx-auto border border-gray-200 rounded-xl overflow-hidden">
-      <div className="px-4 py-3 border-b border-gray-200 bg-gray-50">
-        <h2 className="font-semibold text-gray-900">Ask about my experience</h2>
-        <p className="text-sm text-gray-500">
+    <div id="resume-chat" className="flex h-[600px] max-w-2xl flex-col overflow-hidden rounded-xl border border-border bg-background">
+      <div className="border-b bg-header border-border px-4 py-3">
+        <h2 className="font-semibold text-foreground">Ask about my experience</h2>
+        <p className="text-sm text-muted">
           Answers are grounded in my resume and project notes.
         </p>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+      <div ref={messagesContainerRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
         {messages.length === 0 && (
           <div className="space-y-2">
-            <p className="text-sm text-gray-500">Try asking:</p>
+            <p className="text-sm text-muted">Try asking:</p>
             <div className="flex flex-wrap gap-2">
               {SUGGESTED_QUESTIONS.map((q) => (
                 <button
                   key={q}
                   onClick={() => askSuggested(q)}
-                  className="text-sm px-3 py-1.5 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
+                  className="rounded-full border border-border px-3 py-1.5 text-foreground text-sm transition-colors hover:bg-header"
                 >
                   {q}
                 </button>
@@ -71,10 +74,10 @@ export default function ResumeChat() {
             className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm whitespace-pre-wrap ${
+              className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-2 text-sm ${
                 m.role === "user"
                   ? "bg-blue-600 text-white"
-                  : "bg-gray-100 text-gray-900"
+                  : "bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-100"
               }`}
             >
               {m.parts.map((part, i) =>
@@ -86,7 +89,7 @@ export default function ResumeChat() {
 
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-gray-100 text-gray-500 rounded-2xl px-4 py-2 text-sm">
+            <div className="rounded-2xl bg-gray-100 px-4 py-2 text-sm text-gray-500 dark:bg-gray-800 dark:text-gray-400">
               Thinking…
             </div>
           </div>
@@ -98,23 +101,22 @@ export default function ResumeChat() {
           </div>
         )}
 
-        <div ref={scrollRef} />
       </div>
 
       <form
         onSubmit={handleSubmit}
-        className="border-t border-gray-200 p-3 flex gap-2"
+        className="flex gap-2 border-t border-border bg-background p-3 dark:bg-black"
       >
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask a question…"
-          className="flex-1 rounded-full border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground placeholder:text-foreground focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder:text-gray-400"
         />
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="rounded-full bg-blue-600 text-white px-4 py-2 text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+          className="rounded-full bg-accent2 text-accent px-4 py-2 text-sm font-medium cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Send
         </button>

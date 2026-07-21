@@ -2,23 +2,15 @@
 title: "Steven Garcia — Resume"
 type: "resume"
 name: "Steven Garcia"
-location: "Tustin, CA 92780"
 phone: "(909) 518-7035"
 email: "sgarc22@gmail.com"
-tags: ["fullstack", "devops", ".net", "react", "ai-agents", "aws"]
+tags: ["fullstack", "devops", ".net", "react", "ai-agents", "aws", "C#", "python"]
 ---
-
-## Summary
-
-Fullstack / DevOps developer with experience spanning .NET Core, React,
-AWS infrastructure, and — most recently — building AI agent integrations
-using OpenAI and Google Gemini tooling. Background covers the full stack:
-backend APIs, frontend UI, cloud deployment, and CI/CD pipelines.
 
 ## Experience
 
 ### Fullstack/DevOps Developer — Hooray Agency
-**Jun 2023 – Present**
+**Jun 2023 – Jun 2026**
 
 - Built a website managing and deployment hub in .NET Core Blazor that 
   integrates data from multiple third-party APIs (Cloudflare, Monday.com, 
@@ -78,7 +70,7 @@ backend APIs, frontend UI, cloud deployment, and CI/CD pipelines.
   via API for consuming and providing data
 
 ### Senior Software Engineer — CyberCoders
-**April 2015 – Nov 2016**
+**Apr 2015 – Nov 2016**
 
 - Built backend API REST calls using .NET MVC 5 to provide view models
   to client-side pages and perform application business logic
@@ -102,7 +94,7 @@ backend APIs, frontend UI, cloud deployment, and CI/CD pipelines.
   system information
 
 ### EDI Software Lead Developer — Quality Systems Inc.
-**April 2009 – December 2015**
+**Apr 2009 – Apr 2015**
 
 - Designed architecture, built, and deployed RESTful ASP.NET Web APIs to
   expose backend SQL/MySQL EDI databases using C#
@@ -167,6 +159,15 @@ Unity, IIS, WCF, PowerShell; exposure to Win32, COM, WPF
 **Applications & tools:** Visual Studio 2005–2022, Team Foundation Server,
 VS Code, Cursor, Copilot, Claude, ChatGPT, IIS, Node.js, Docker, Git, 
 Tortoise SVN, SQL Server Management Studio, VMWare, CCS Compiler
+
+**AI & Agents:** OpenAI Studio Builder & ChatKit, Google Gemini ADK with AG-UI/Copilot 
+Runtime, custom Python agents integrated with MCP servers (Google Analytics, Google Ads, 
+Monday.com)
+
+**Cloud & Delivery:** AWS (EC2, RDS, CodePipeline, CodeBuild, CodeDeploy), CI/CD pipeline 
+design, agile/Scrum, code review, cross-functional collaboration with product and business 
+stakeholders
+
 
 ## Education
 
