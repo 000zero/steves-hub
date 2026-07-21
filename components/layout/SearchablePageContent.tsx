@@ -29,7 +29,7 @@ function extractTextContent(node: ReactNode): string {
     return node.map(extractTextContent).join("");
   }
 
-  if (isValidElement(node)) {
+  if (isValidElement<{ children?: ReactNode }>(node)) {
     return extractTextContent(node.props.children);
   }
 
@@ -77,7 +77,7 @@ function renderHighlightedText(node: ReactNode, query: string, onMatchClick: (in
     );
   }
 
-  if (isValidElement(node)) {
+  if (isValidElement<{ children?: ReactNode }>(node)) {
     const children = renderHighlightedText(node.props.children, query, onMatchClick);
     return cloneElement(node, { children });
   }
