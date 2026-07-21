@@ -98,6 +98,8 @@ export default async function MyHubLayout() {
                   "RAG",
                   "MCP",
                   "AWS",
+                  "Git",
+                  "CI/CD",
                 ].map((topic) => (
                   <span
                     key={topic}

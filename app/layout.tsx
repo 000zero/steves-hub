@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Steven Garcia",
+  title: "Steve's Hub",
   description: "Interactive Resume",
 };
 

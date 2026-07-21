@@ -80,7 +80,7 @@ export default function TopNav() {
             <button
               type="button"
               onClick={() => setIsSearchOpen((prev) => !prev)}
-              className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-opposite-background text-[#e6edf3] sm:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-[#25292e] text-[#e6edf3] sm:hidden"
               aria-label="Toggle search"
             >
               <Search size={16} />
